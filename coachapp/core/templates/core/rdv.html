@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Rendez-vous{% endblock title %}
+{% block content %}
+<header>
+    <h1>Prendre rdv :</h1>
+</header>
+<section>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Valider" />
+    </form>
+    
+</section>
+{% endblock content %}

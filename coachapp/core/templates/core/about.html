@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}À propos{% endblock title %}
+{% block content %}
+  <main>
+    <div class="grid-container">
+        <div class="grid-item-image">
+            <figure class="self">
+                <img src="{% static 'media/coach.jpeg' %}" alt="Photo du coach">
+            </figure>
+        </div>
+        <div class="grid-item-text">
+            <h1>À propos de MonCoachPersonnel.com</h1>
+            <p>MonCoachPersonnel.com est une plateforme en ligne qui propose des services de coaching en développement personnel. Nous accompagnons nos clients dans leur démarche de développement personnel en leur offrant des séances de coaching personnalisées et adaptées à leurs besoins et à leur personnalité.</p>
+            <p>Notre équipe de coachs professionnels est formée aux techniques les plus récentes et les plus efficaces en matière de développement personnel. Nous croyons que chacun est capable de changer et de s'améliorer, et nous sommes là pour aider nos clients à atteindre leurs objectifs et à vivre la vie qu'ils méritent.</p>
+            <h2>Notre équipe</h2>
+            <ul>
+                <li>John Doe - Fondateur et coach principal</li>
+                <li>Jane Smith - Coach en développement personnel</li>
+                <li>Bob Johnson - Coach en leadership et communication</li>
+            </ul>
+        </div>
+    </div>
+</main>
+
+  <footer>
+    <p>&copy; 2023 MonCoachPersonnel.com - Tous droits réservés</p>
+  </footer>
+{% endblock content %}

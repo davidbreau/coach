@@ -1,14 +1,17 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
-from .forms import LoginForm, SignupForm
+from .models import Appointment
+from core.forms import LoginForm, SignupForm, AppointForm
 from django.contrib.auth import login, authenticate, logout
 from django.views.generic import View
 from django.contrib.auth.decorators import login_required
-
+from datetime import datetime, timedelta
+from django.contrib import messages
+from django.views.generic.edit import CreateView
 
 @login_required
 def index(request):
-    return render(request, 'app/index.html')
+    return render(request, 'core/index.html')
 
 
 def log_in(request):
@@ -28,7 +31,7 @@ def log_in(request):
             else:
                 message = 'Identifiants invalides.'
     return render(
-        request, 'app/authentication/log_in.html', context={'form': form, 'message': message})
+        request, 'core/authentication/log_in.html', context={'form': form, 'message': message})
     
 def logout_user(request):
     
@@ -44,10 +47,28 @@ def sign_up(request):
             user = form.save()
             # auto-login user
             login(request, user)
-            return redirect(settings.LOGIN_REDIRECT_URL)
-    return render(request, 'app/authentication/sign_up.html', context={'form': form})
+            return redirect('index')
+    return render(request, 'core/authentication/sign_up.html', context={'form': form})
 
 @login_required
 def rdv(request):
-    return render(request, 'app/rdv.html')
+    form = AppointForm
+    if request.method == 'POST':
+        form = AppointForm(request.POST)
+        user = request.user
+        if form.is_valid():
+            cd = form.cleaned_data
+            rendez_vous = Appointment(
+                date = cd['date'],
+                time = cd['time'],
+                message = cd['message']
+            )
+            rendez_vous.save()
+            # messages.succes(request, 'Rendez-vous validé')
+    else:
+        form = AppointForm()
+    return render(request, 'core/rdv.html', context={'form': form})
 
+
+def about(request):
+    return render(request, 'core/about.html')
