@@ -14,7 +14,7 @@ class LoginForm(forms.Form):
 class SignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
-        fields = ('username', 'email', 'first_name', 'last_name')
+        fields = ('username', 'email', 'first_name', 'last_name', 'is_staff')
 
 class DateInput(forms.DateInput):
     input_type = 'date'

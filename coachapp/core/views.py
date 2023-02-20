@@ -59,6 +59,8 @@ def rdv(request):
         if form.is_valid():
             cd = form.cleaned_data
             rendez_vous = Appointment(
+                user = request.user,
+                name = cd['name'],
                 date = cd['date'],
                 time = cd['time'],
                 message = cd['message']
@@ -69,6 +71,13 @@ def rdv(request):
         form = AppointForm()
     return render(request, 'core/rdv.html', context={'form': form})
 
-
 def about(request):
     return render(request, 'core/about.html')
+
+@login_required
+def seerdv(request):
+    appointments = Appointment.objects.all()
+    if request.user.is_staff:
+        return render(request, 'core/seerdv.html', {'appointments': appointments})
+    else:
+        return render(request, 'index')

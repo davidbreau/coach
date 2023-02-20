@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Prochains rendez-vous{% endblock title %}
+{% block content %}
+<ul>
+    {% for appointment in appointments %}
+        <div class=rdv>
+            <p>-------------------------------</p>
+            <li><{{ appointment.name }} </li>
+            <li><{{ appointment.date }} </li>
+            <li><{{ appointment.time }} </li>
+            <li><{{ appointment.message }} </li>
+            <li><{{ appointment.time_ordered }} </li>
+        </div>
+    {% endfor %}
+</ul>
+
+
+{% endblock content %}

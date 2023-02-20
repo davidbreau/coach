@@ -25,5 +25,6 @@ urlpatterns = [
     path('sign_up/', core.views.sign_up, name='sign_up'),
     path('logout/', core.views.logout_user, name='logout'),
     path('rdv/', core.views.rdv, name='rdv'),
-    path('about/', core.views.about, name='about')
+    path('about/', core.views.about, name='about'),
+    path('seerdv/', core.views.seerdv, name='seerdv')
 ]

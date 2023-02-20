@@ -11,18 +11,18 @@
 </head>
 <body>
     <nav>
-        <figure>
+        <figure><li>{{ request.user }}</li>
         </figure>
-            {% if user.is_authenticated %}
-                <ul>
-                    
-                    <li>{{ request.user }}</li>
-                    <li>           <li>
+            <ul>
+                {% if user.is_staff %}
+                  <li><a href="{% url 'seerdv' %}">Rendez-vous</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
                     <li><a href="{% url 'index' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'logout' %}">Log out</a></li>
-                </ul>
-            {% endif %}
+                {% endif %}
+            </ul>
             {% if not user.is_authenticated %}
                 <ul>
                     <li><a href="{% url 'index' %}">Home</a></li>
