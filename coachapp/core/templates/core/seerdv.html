@@ -3,16 +3,17 @@
 {% block content %}
 <ul>
     {% for appointment in appointments %}
-        <div class=rdv>
+    {% csrf_token %}
+        <div class='rdv'>
             <p>-------------------------------</p>
-            <li><{{ appointment.name }} </li>
-            <li><{{ appointment.date }} </li>
-            <li><{{ appointment.time }} </li>
-            <li><{{ appointment.message }} </li>
-            <li><{{ appointment.time_ordered }} </li>
+            <li>{{ appointment.name }} </li>
+            <li>{{ appointment.date }} </li>
+            <li>{{ appointment.time }} </li>
+            <li>{{ appointment.message }} </li>
+            <li>{{ appointment.time_ordered }} </li>
         </div>
     {% endfor %}
 </ul>
 
 
-{% endblock content %}
+{% endblock %}
