@@ -11,7 +11,10 @@
 </head>
 <body>
     <nav>
-        <figure><li>{{ request.user }}</li>
+        <figure>
+            {% if user.is_authenticated %}
+                <li>{{ request.user }}</li>
+            {% endif %}
         </figure>
             <ul>
                 {% if user.is_staff %}

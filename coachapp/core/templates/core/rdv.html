@@ -8,8 +8,15 @@
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Valider" />
+        <button onclick="myalert()">
+            <input type="submit" value="Valider" />
+        </button>
+          
+         <script>
+            function myalert() {
+                alert("Rendez-vous validé");
+            }
+        </script>
     </form>
-    
 </section>
 {% endblock content %}

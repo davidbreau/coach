@@ -66,7 +66,6 @@ def rdv(request):
                 message = cd['message']
             )
             rendez_vous.save()
-            # messages.succes(request, 'Rendez-vous validé')
     else:
         form = AppointForm()
     return render(request, 'core/rdv.html', context={'form': form})
